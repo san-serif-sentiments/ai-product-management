@@ -34,6 +34,11 @@ AI Reading is a local-first Retrieval-Augmented Generation (RAG) toolkit that le
 ## Getting started
 1. Copy `.env.example` to `.env` and adjust secrets.
 2. Install prerequisites: Docker, Make, Ollama (or LM Studio CLI).
+3. Install Python dependencies for the local toolchain: `pip install -e .` (or add the repo to `PYTHONPATH` if offline).
+4. Run `make bootstrap` to pull containers and download local models.
+5. Run `make up` to start the stack; use `make ingest` or `ai-reading ingest` to load sample docs.
+6. Preview retrieval quality with `ai-reading query "What is the remote work policy?"` and iterate on prompts before wider rollout.
+7. Access usage dashboards via `make adoption-report` or `ai-reading adoption-report` once traffic exists.
 3. Run `make bootstrap` to pull models and create local volumes.
 4. Run `make up` to start the stack; use `make ingest` to load sample docs.
 5. Access usage dashboards via `make adoption-report` once traffic exists.
@@ -45,6 +50,7 @@ AI Reading is a local-first Retrieval-Augmented Generation (RAG) toolkit that le
 ## Support and contributions
 - File issues for defects or doc gaps.
 - Fork and open PRs for improvements; include governance and adoption impacts in descriptions.
+- Run `ai-reading init-usage-log` when sharing demos so reviewers see realistic adoption telemetry.
 - Join discussions on local-first AI patterns in the Issues tab.
 
 ## License

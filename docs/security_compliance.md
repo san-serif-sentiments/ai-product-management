@@ -53,3 +53,4 @@ AI Reading aligns to EU AI Act risk-based requirements by classifying use cases 
 1. **Monthly**: Review guardrail effectiveness metrics, blocked prompts, and adoption anomalies.
 2. **Quarterly**: Reassess risk classification, validate documentation, and refresh training for operators.
 3. **Annually**: Conduct independent audit of logs, controls, and policy alignment; update governance playbook for EU AI Act refinements.
+4. **Event-driven**: Trigger post-incident reviews within 5 business days of any severity-1/2 event, document corrective actions, and capture evidence in the compliance workspace.
