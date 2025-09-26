@@ -54,8 +54,11 @@ Track these metrics to confirm AI Reading delivers measurable value while stayin
   - SMB: < 2 business days.
   - Enterprise: < 1 business day with on-call compliance rotation.
 
-## Reporting workflow
+## Reporting workflow 
 1. Export metrics via `make adoption-report` (SMB) or scheduled pipeline (enterprise); archive raw JSON in `logs/metrics/` for traceability.
 2. Manager of AI reviews KPI dashboard; share exec summary via Exec Brief Agent monthly.
 3. Capture corrective actions and re-forecast targets quarterly.
 4. Automate unit checks with `ai-reading adoption-report --log-path logs/usage.jsonl` during CI to catch regressions in telemetry parsing.
+1. Export metrics via `make adoption-report` (SMB) or scheduled pipeline (enterprise).
+2. Manager of AI reviews KPI dashboard; share exec summary via Exec Brief Agent monthly.
+3. Capture corrective actions and re-forecast targets quarterly.

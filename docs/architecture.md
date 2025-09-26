@@ -69,7 +69,7 @@ flowchart TD
 
 ## Component summary
 - **Ingestion pipeline** cleans and chunks documents, producing embeddings with local models (e.g., `nomic-embed-text`).
-- **Vector store** defaults to Chroma for embedded metadata, with optional Qdrant cluster for sharded, multi-tenant needs.
+- **Vector store** defaults to Chroma for embedded metadata, with optional Qdrant cluster for sharded, multi-tenant needs. 
 - **Offline toolkit** ships with a lightweight JSON vector index for air-gapped validation and unit testing when containerized services are unavailable; swap to Chroma/Qdrant in production deployments.
 - **Agents** encapsulate prompt logic and guardrails, orchestrated through local APIs.
 - **Runtime** executes retrieval + generation, applying guardrails and logging every decision.
@@ -90,7 +90,7 @@ flowchart TD
 ## Scaling guidance
 - Start with a single Compose deployment using GPU-enabled hardware for pilots.
 - Add Qdrant + autoscaling Ollama workers for enterprise production.
-- Use message queues (e.g., Redis, RabbitMQ) if ingestion concurrency exceeds 100 documents per hour.
+- Use message queues (e.g., Redis, RabbitMQ) if ingestion concurrency exceeds 100 documents per hour. 
 
 ## Production readiness checklist
 - **Observability**: forward orchestrator logs to the centralized stack (ELK, Loki) and enable Prometheus scraping on ports `9100` (agents) and `9090` (vector DB health).

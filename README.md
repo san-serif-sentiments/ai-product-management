@@ -39,6 +39,9 @@ AI Reading is a local-first Retrieval-Augmented Generation (RAG) toolkit that le
 5. Run `make up` to start the stack; use `make ingest` or `ai-reading ingest` to load sample docs.
 6. Preview retrieval quality with `ai-reading query "What is the remote work policy?"` and iterate on prompts before wider rollout.
 7. Access usage dashboards via `make adoption-report` or `ai-reading adoption-report` once traffic exists.
+3. Run `make bootstrap` to pull models and create local volumes.
+4. Run `make up` to start the stack; use `make ingest` to load sample docs.
+5. Access usage dashboards via `make adoption-report` once traffic exists.
 
 ## Target users
 - SMB teams looking for low-lift knowledge copilots with strict boundary controls.
