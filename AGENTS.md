@@ -1,4 +1,3 @@
-
 ---
 title: Agents Guide
 archetype: guide
@@ -102,6 +101,3 @@ Agents are small, **single-purpose AI workers** that make the AI Reading system 
 - **Pilot with Ingestion + Retrieval + Risk first.**  
 - Add Adoption Insights once there’s steady usage.  
 - Only add Exec Brief when risk/compliance is proven.
-
-
-
