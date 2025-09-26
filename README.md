@@ -1,41 +1,54 @@
 ---
 title: AI Reading — Intelligent Knowledge Companion
-archetype: product
-status: draft
-owner: PoeticMayhem
-maintainer: Shaily
+archetype: readme
+status: beta
+owner: AI Product Team
+maintainer: LLMOps Guild
 version: 0.1.0
-tags: [RAG, LLMOps, adoption, governance, SMB, enterprise]
-last_reviewed: 2025-09-26
+tags: [ai-reading, rag, governance, adoption]
+last_reviewed: 2025-03-01
 ---
 
 # AI Reading — Intelligent Knowledge Companion
 
-## Overview
-AI Reading helps teams **ingest, index, enrich, and retrieve** internal knowledge (docs, wikis, PDFs) with **role-aware** guidance: executive briefs, impact analysis, adoption hints, and compliance notes.
+AI Reading is a local-first Retrieval-Augmented Generation (RAG) toolkit that lets knowledge teams curate, govern, and deliver role-aware answers from internal content. It ships with an opinionated architecture, agent prompts, and operational scripts so small teams and enterprises can move from pilot to scaled adoption without sacrificing control.
 
-- **Why now:** 78% of orgs report using AI in at least one function (Mar 2025) and are rewiring workflows for value, risk, and governance. 0  
-- **Value gap:** Knowledge workers still lose **~1.8 hours/day** searching for information; structured knowledge & retrieval can materially cut that. 1  
-- **Risk climate:** GenAI threats (deepfakes, prompt-injection) are rising; SMBs are targeted too. Governance and guardrails are essential. 2
+## Why this repo exists
+- Search friction slows knowledge work and drives shadow AI usage. [CITE:MCKINSEY_2025]
+- Regulated industries need AI systems that prove compliance without external data leakage. [CITE:EU_AIACT]
+- Adoption stalls without programmatic role clarity and measurable success criteria. [CITE:IBM_2024]
 
-## What it does
-- **Ingest** (connectors + cleaning) → **Chunk** → **Embed** → **Index** (Chroma/Qdrant)  
-- **Retrieve** (semantic + filters) → **Generate** (role-aware prompts) → **Log & Evaluate**  
-- **Govern** (PII redaction, audit trails, AI Act awareness) → **Adopt** (dashboards, playbooks)
+## Core capabilities
+1. **Local-first pipeline**: Ollama or LM Studio for inference, Chroma default vector store, optional Qdrant for scale.
+2. **Role-aware experiences**: Prebuilt prompts for business analysts, program managers, adoption leads, and AI leaders.
+3. **Governance-ready**: EU AI Act-aligned controls across ingest, runtime, and post-run with audit trails.
+4. **Adoption playbooks**: Metrics, change tactics, and executive briefs to keep stakeholders aligned.
 
-## Who it’s for
-- **SMBs:** faster onboarding, fewer repetitive queries, low-ops local stack.
-- **Enterprises:** policy-aware retrieval, auditability, role-scoped outputs.
+## Repository layout
+- `docs/` — Strategy, architecture, security, metrics, and references.
+- `roles/` — Pragmatic guides for the four key personas.
+- `agents/` — System prompts, guardrails, and configuration templates.
+- `data/` — Sample documents and vector index placeholder.
+- `ops/` — Local orchestration via Makefile, Docker Compose, and env template.
 
-## Quick start
-```bash
-# 1) Clone & configure
-cp ops/.env.example .env
-# set OLLAMA/LM Studio model names, embeddings, vector store path
+## Getting started
+1. Copy `.env.example` to `.env` and adjust secrets.
+2. Install prerequisites: Docker, Make, Ollama (or LM Studio CLI).
+3. Install Python dependencies for the local toolchain: `pip install -e .` (or add the repo to `PYTHONPATH` if offline).
+4. Run `make bootstrap` to pull containers and download local models.
+5. Run `make up` to start the stack; use `make ingest` or `ai-reading ingest` to load sample docs.
+6. Preview retrieval quality with `ai-reading query "What is the remote work policy?"` and iterate on prompts before wider rollout.
+7. Access usage dashboards via `make adoption-report` or `ai-reading adoption-report` once traffic exists.
 
-# 2) Local dev (no internet calls)
-make dev
+## Target users
+- SMB teams looking for low-lift knowledge copilots with strict boundary controls.
+- Enterprise programs that need evidence of compliance, auditability, and adoption maturity.
 
-# 3) Index sample docs, run a test query
-make ingest
-make query Q="What changed in the leave policy?"# ai-product-management
+## Support and contributions
+- File issues for defects or doc gaps.
+- Fork and open PRs for improvements; include governance and adoption impacts in descriptions.
+- Run `ai-reading init-usage-log` when sharing demos so reviewers see realistic adoption telemetry.
+- Join discussions on local-first AI patterns in the Issues tab.
+
+## License
+Released under the MIT License (see `LICENSE`).

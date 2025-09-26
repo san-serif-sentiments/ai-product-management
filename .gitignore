@@ -1,0 +1,19 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Local environment
+.env
+ops/.env
+
+# Logs and temp files
+logs/
+*.log
+
+# Vector indexes
+data/vectors/*
+!data/vectors/.gitignore
+
+# OS files
+.DS_Store
+Thumbs.db

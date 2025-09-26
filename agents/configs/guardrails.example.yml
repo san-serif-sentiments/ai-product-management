@@ -1,0 +1,39 @@
+# AI Reading guardrails template
+policies:
+  restricted_terms:
+    - "project codenames"
+    - "financial forecast"
+    - "personally identifiable"
+  deny_patterns:
+    - name: credit_card
+      regex: '\\b(?:\\d[ -]*?){13,16}\\b'
+      action: block
+    - name: national_id
+      regex: '\\b[A-Z]{2}\\d{6}\\b'
+      action: warn
+  required_citations: true
+
+escalation:
+  warn:
+    smb:
+      channel: email
+      recipients:
+        - compliance@example.com
+    enterprise:
+      channel: ticket
+      system: servicenow
+      priority: P3
+  block:
+    smb:
+      channel: phone
+      contact: +1-555-555-0100
+    enterprise:
+      channel: pagerduty
+      service: ai-reading-compliance
+      priority: P2
+
+logging:
+  redact_pii: true
+  store_duration_days:
+    smb: 365
+    enterprise: 730

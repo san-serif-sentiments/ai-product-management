@@ -1,0 +1,52 @@
+# AI Reading agent settings template
+stack:
+  inference:
+    provider: ollama
+    base_url: http://localhost:11434
+    models:
+      default_llm: mistral:instruct
+      exec_brief_llm: llama3:70b
+      embedding_model: nomic-embed-text
+  vector_store:
+    primary: chroma
+    optional:
+      enabled: false
+      provider: qdrant
+      url: http://localhost:6333
+  storage:
+    chunk_dir: ./data/chunks
+    log_dir: ./logs/agents
+
+agents:
+  ingestion:
+    chunk_size: 400
+    overlap: 80
+    pii_masks:
+      - EMAIL
+      - PHONE
+      - ID_NUMBER
+  compliance:
+    default_risk_threshold: medium
+    alert_channels:
+      smb: email
+      enterprise: pagerduty
+  adoption_insights:
+    aggregation_window_days: 7
+    min_cohort_size: 5
+  exec_brief:
+    max_words: 300
+    enforce_citations: true
+
+observability:
+  enable_metrics: true
+  metrics_port: 9100
+  enable_tracing: false
+
+security:
+  tls:
+    enabled: false
+    cert_path: ./ops/certs/server.crt
+    key_path: ./ops/certs/server.key
+  auth:
+    mode: token
+    token_env_var: AI_READING_API_TOKEN
